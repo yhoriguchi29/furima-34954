@@ -2,14 +2,14 @@
 
 ## users テーブル
 
-| Column               | Type     | Options     |
-| -------------------- | -------- | ----------- |
-| nickname             | string   | null: false |
-| name_kanji           | string   | null: false |
-| name_hiragana        | string   | null: false |
-| email                | string   | null: false |
-| password             | string   | null: false |
-| birth_date           | string   | null: false |
+| Column               | Type     | Options                   |
+| -------------------- | -------- | ------------------------- |
+| nickname             | string   | null: false               |
+| name_kanji           | string   | null: false               |
+| name_hiragana        | string   | null: false               |
+| email                | string   | null: false, unique: true |
+| password             | string   | null: false               |
+| birth_date           | string   | null: false               |
 
 ### Association
 
