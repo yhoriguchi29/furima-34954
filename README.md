@@ -30,7 +30,6 @@
 | ship_area_id | integer       | null: false                    |
 | ship_date_id | integer       | null: false                    |
 | sales_price  | integer       | null: false                    |
-| cost         | integer       | null: false                    |
 | user         | references    | null: false, foreign_key: true |
 
 ### Association
@@ -49,7 +48,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :deliver_address
+- has_one :deliver_location
 
 ## deliver_locations テーブル
 
@@ -59,7 +58,7 @@
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
-| building      | string     | null: false                    |
+| building      | string     |                                |
 | phone_number  | string     | null: false                    |
 | order         | references | null: false, foreign_key: true |
 
