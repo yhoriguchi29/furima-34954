@@ -5,11 +5,13 @@
 | Column               | Type     | Options                   |
 | -------------------- | -------- | ------------------------- |
 | nickname             | string   | null: false               |
-| name_kanji           | string   | null: false               |
-| name_hiragana        | string   | null: false               |
+| name_kanji_last      | string   | null: false               |
+| name_kanji_first     | string   | null: false               |
+| name_furigana_last   | string   | null: false               |
+| name_furigana_first  | string   | null: false               |
 | email                | string   | null: false, unique: true |
-| password             | string   | null: false               |
-| birth_date           | string   | null: false               |
+| encrypted_password   | string   | null: false               |
+| birth_date           | date     | null: false               |
 
 ### Association
 
@@ -21,14 +23,13 @@
 | Column       | Type          | Options                        |
 | ------------ | ------------- | ------------------------------ |
 | name         | string        | null: false                    |
-| description  | string        | null: false                    |
-| category     | string        | null: false                    |
-| condition    | string        | null: false                    |
-| ship_fee     | string        | null: false                    |
-| ship_area    | string        | null: false                    |
-| ship_date    | string        | null: false                    |
+| description  | text          | null: false                    |
+| category_id  | integer       | null: false                    |
+| condition_id | integer       | null: false                    |
+| ship_fee_id  | integer       | null: false                    |
+| ship_area_id | integer       | null: false                    |
+| ship_date_id | integer       | null: false                    |
 | sales_price  | integer       | null: false                    |
-| sales_fee    | integer       | null: false                    |
 | cost         | integer       | null: false                    |
 | user         | references    | null: false, foreign_key: true |
 
@@ -50,16 +51,17 @@
 - belongs_to :item
 - has_one :deliver_address
 
-## deliver_address テーブル
+## deliver_locations テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| postal_code  | string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| city         | string     | null: false                    |
-| house_number | string     | null: false                    |
-| phone_number | string     | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building      | string     | null: false                    |
+| phone_number  | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
