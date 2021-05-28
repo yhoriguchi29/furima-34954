@@ -39,19 +39,19 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Condition must be other than 1')
       end
       it 'shipChargeが空では保存できないこと' do
-        @item.shipCharge_id = 1
+        @item.ship_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipcharge must be other than 1')
+        expect(@item.errors.full_messages).to include('Ship charge must be other than 1')
       end
       it 'shipAreaが空では保存できないこと' do
-        @item.shipArea_id = 1
+        @item.ship_area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shiparea must be other than 1')
+        expect(@item.errors.full_messages).to include('Ship area must be other than 1')
       end
       it 'shipDateが空では保存できないこと' do
-        @item.shipDate_id = 1
+        @item.ship_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipdate must be other than 1')
+        expect(@item.errors.full_messages).to include('Ship date must be other than 1')
       end
       it 'sales_priceが空では保存できないこと' do
         @item.sales_price = ''
