@@ -4,7 +4,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :description
       t.integer :category_id
-      t.integer :ship_fee_id
+      t.integer :condition_id
+      t.integer :ship_charge_id
       t.integer :ship_area_id
       t.integer :ship_date_id
       t.integer :sales_price
