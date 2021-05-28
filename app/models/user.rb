@@ -19,4 +19,6 @@ class User < ApplicationRecord
                         message: 'is invalid. Input both letters and numbers in half-width characters.' }
     validates :birth_date
   end
+
+  has_many :users
 end
