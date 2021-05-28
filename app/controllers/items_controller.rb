@@ -18,10 +18,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.all
-  end
-
   private
 
   def item_params
