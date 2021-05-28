@@ -44,9 +44,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Shipcharge must be other than 1')
       end
       it 'shipAreaが空では保存できないこと' do
-        @item.shipArea_id = 0
+        @item.shipArea_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shiparea must be other than 0')
+        expect(@item.errors.full_messages).to include('Shiparea must be other than 1')
       end
       it 'shipDateが空では保存できないこと' do
         @item.shipDate_id = 1
@@ -70,6 +70,16 @@ RSpec.describe Item, type: :model do
       end
       it 'sales_priceは半角数字でなければ保存できないこと' do
         @item.sales_price = '５０００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Sales price is invalid')
+      end
+      it 'sales_priceは半角英数字混合では保存できないこと' do
+        @item.sales_price = '2thousand'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Sales price is invalid')
+      end
+      it 'sales_priceは半角英語では保存できないこと' do
+        @item.sales_price = 'thousand'
         @item.valid?
         expect(@item.errors.full_messages).to include('Sales price is invalid')
       end

@@ -13,13 +13,14 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :description
-    validates :category_id, numericality: { other_than: 1 }
-    validates :condition_id, numericality: { other_than: 1 }
-    validates :shipCharge_id, numericality: { other_than: 1 }
-    validates :shipArea_id, numericality: { other_than: 0 }
-    validates :shipDate_id, numericality: { other_than: 1 }
-    validates :sales_price,
-              numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
-                              message: 'is invalid' }
+    validates :sales_price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+                    message: 'is invalid' }
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :condition_id
+      validates :shipCharge_id
+      validates :shipArea_id
+      validates :shipDate_id
+    end
   end
 end
