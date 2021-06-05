@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   before do
-    @orderaddress = FactoryBot.build(:order_address)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @orderaddress = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
+    sleep(1)
   end
 
   context '内容に問題ない場合' do
@@ -30,6 +33,31 @@ RSpec.describe OrderAddress, type: :model do
       @orderaddress.ship_area_id = 1
       @orderaddress.valid?
       expect(@orderaddress.errors.full_messages).to include("Ship area can't be blank")
+    end
+    it 'cityが空だと保存できないこと' do
+      @orderaddress.city = ''
+      @orderaddress.valid?
+      expect(@orderaddress.errors.full_messages).to include("City can't be blank")
+    end
+    it 'house_numberが空だと保存できないこと' do
+      @orderaddress.house_number = ''
+      @orderaddress.valid?
+      expect(@orderaddress.errors.full_messages).to include("House number can't be blank")
+    end
+    it 'phone_numberが空だと保存できないこと' do
+      @orderaddress.phone_number = ''
+      @orderaddress.valid?
+      expect(@orderaddress.errors.full_messages).to include("Phone number can't be blank")
+    end
+    it 'phone_numberが11桁以内でないと保存できないこと' do
+      @orderaddress.phone_number = '111111111111'
+      @orderaddress.valid?
+      expect(@orderaddress.errors.full_messages).to include("Phone number is invalid")
+    end
+    it 'phone_numberが数値のみでないと保存できないこと' do
+      @orderaddress.phone_number = 'aaaaa111111'
+      @orderaddress.valid?
+      expect(@orderaddress.errors.full_messages).to include("Phone number is invalid")
     end
     it 'tokenが空では保存できないこと' do
       @orderaddress.token = nil
