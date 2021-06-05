@@ -48,9 +48,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :deliver_location
+- has_one :address
 
-## deliver_locations テーブル
+## addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
